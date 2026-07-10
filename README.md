@@ -54,6 +54,10 @@ jupyter notebook via_QSVT.ipynb
 README.md
 requirements.txt
 via_QSVT.ipynb
+presentation/
+  circuit.png
+  slides.pdf
+  slides.tex
 ```
 
 ## References
