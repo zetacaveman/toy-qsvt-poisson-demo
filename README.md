@@ -1,7 +1,8 @@
-# Toy QSVT Poisson Solver
+# Toy QSVT Poisson Demo
 
-This repository contains a small notebook demo for solving a 1D Poisson finite
-difference system with Quantum Singular Value Transformation (QSVT).
+A compact notebook demo of using Quantum Signal Processing (QSP) and Quantum
+Singular Value Transformation (QSVT) on a two-point finite-difference
+discretization of the 1D Poisson equation.
 
 The model problem is
 
@@ -20,22 +21,24 @@ A =
 \end{bmatrix}.
 $$
 
-The notebook `via_QSVT.ipynb` walks through a tiny QSP/QSVT demo for this
+The notebook `via_QSVT.ipynb` walks through the construction for this tiny
 matrix:
 
 1. Normalize the matrix as `B = A / alpha`.
 2. Build a Hermitian signal unitary whose top-left block is `B`.
-3. Identify the inverse-function target `p(x) approx gamma / x`.
-4. Choose a degree-3 polynomial that matches `gamma/x` on the two eigenvalues
+3. Set the inverse target by approximating `gamma / x` on the nonzero spectrum
+   of `B`.
+4. Choose a degree-3 polynomial that matches `gamma / x` on the two eigenvalues
    of `B`.
 5. Build the matrix-level QSP/QSVT unitary for that polynomial.
 6. Draw and simulate the corresponding Qiskit circuit.
 7. Postselect the signal ancilla and compare the output with the classical
    solution.
 
-The notebook also reviews scalar QSP, multi-qubit QSP, block encoding, and how
-QSVT applies polynomial transformations to singular values. This two-eigenvalue
-example uses a small matching polynomial; a larger Poisson solver would need a
+The notebook also reviews scalar QSP, multi-qubit QSP, block encoding, and the
+way QSVT applies polynomial transformations to singular values. Since this
+example has only two eigenvalues, the polynomial is chosen by interpolation at
+those eigenvalues. Scaling the same idea to larger Poisson matrices requires a
 general polynomial approximation and phase synthesis step.
 
 ## Run
