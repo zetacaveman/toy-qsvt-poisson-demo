@@ -1,2 +1,5 @@
 numpy
 notebook
+qiskit
+matplotlib
+pylatexenc
