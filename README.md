@@ -30,16 +30,20 @@ matrix:
    of `B`.
 4. Choose a degree-3 polynomial that matches `gamma / x` on the two eigenvalues
    of `B`.
-5. Build the matrix-level QSP/QSVT unitary for that polynomial.
-6. Draw and simulate the corresponding Qiskit circuit.
-7. Postselect the signal ancilla and compare the output with the classical
-   solution.
+5. Use precomputed QSP phases for that polynomial.
+6. Build the matrix-level QSP/QSVT unitary and check that its top-left block is
+   `p(B)`.
+7. Draw and simulate the corresponding Qiskit circuit.
+8. Select the signal-ancilla-`0` component in the statevector simulation and
+   check that it equals `p(B)|f>`.
 
 The notebook also reviews scalar QSP, multi-qubit QSP, block encoding, and the
 way QSVT applies polynomial transformations to singular values. Since this
 example has only two eigenvalues, the polynomial is chosen by interpolation at
-those eigenvalues. Scaling the same idea to larger Poisson matrices requires a
-general polynomial approximation and phase synthesis step.
+those eigenvalues, and the QSP phases are supplied as precomputed constants.
+Scaling the same idea to larger Poisson matrices requires a general polynomial
+approximation, a phase-synthesis step, a scalable block encoding, and a
+state-preparation method for the right-hand side.
 
 ## Run
 
